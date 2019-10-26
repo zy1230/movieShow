@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../../movieShow/css/move.css"/>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- 因为这是从豆瓣后台获取数据，图片资源不一定能获取到（可能是因为版权问题），但是字可以获取到 -->
+
+<!-- 另外：因为都是一样地获取字，我只是设计了第一个电影的详细界面，第一个电影，点击图片可以跳转到详细界面-->
+
+
+<div class="d" style="border: 1px solid grey;width:1090px; border-radius: 8px;
+          margin-left: 50px;margin-top: 10px">
+    <div class="d1" id="d1"></div>
+    <div class="d1" id="d2"></div>
+    <div class="d1" id="d3"></div>
+    <div class="d1" id="d4"></div>
+    <div id="d5" style="margin-right: 0;"></div>
+    <div class="d2"></div>
+    <div class="d2"></div>
+    <div class="d2"></div>
+    <div class="d2"></div>
+    <div style="margin-top: 30px;margin-right: 0"></div>
+</div>
+<script>
+    alert("图片可能不能显示（可能存在版权问题），不好意思，代码内有解释，第一张可点击有详细界面")
+    var body=$('body');
+    var div1 = $('#d1');
+    var div2 = $('#d2');
+    var div3 = $('#d3');
+    var div4 = $('#d4');
+    var div5 = $('#d5');
+    var div6 =  $('div div')[5];
+    var div7 =  $('div div')[6];
+    var div8 =  $('div div')[7];
+    var div9 =  $('div div')[8];
+    var div10 = $('div div')[9];
+    $.get('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0',function (data) {
+    $('<h3></h3>').html(data.title+"<hr>").prependTo(body)
+        $('<img/>').attr('src',data.subjects[0].images.large).appendTo(div1);
+    $('<p></p>').html(data.subjects[0].title).addClass('p1').appendTo(div1)
+    $('<a></a>').html("评分:"+data.subjects[0].rating.average).addClass('p0').appendTo(div1)
+    $('<button type="button"></button>').html("选座购票").appendTo(div1)
+    div1.click(function () {
+        window.open("detail.html","_blank");
+      // $(location).attr('href','detail.html');
+    });
+    $('<img/>').attr('src',data.subjects[1].images.large).appendTo(div2);
+    $('<p></p>').html(data.subjects[1].title).addClass('p1').appendTo(div2)
+        $('<a></a>').html("评分:"+data.subjects[1].rating.average).addClass('p0').appendTo(div2)
+    $('<button type="button"></button>').html("选座购票").appendTo(div2)
+ // $('<img src="../photo/a/3.png"/>').appendTo(div3);
+   $('<img/>').attr('src',data.subjects[2].images.large).appendTo(div3);
+    $('<p></p>').html(data.subjects[2].title).addClass('p3').appendTo(div3)
+            $('<a></a>').html("评分:"+data.subjects[2].rating.average).addClass('p0').appendTo(div3)
+    $('<button type="button"></button>').html("选座购票").appendTo(div3)
+   // $('<img src="../photo/a/4.png"/>').appendTo(div4);
+      $('<img/>').attr('src',data.subjects[3].images.large).appendTo(div4);
+    $('<p></p>').html(data.subjects[3].title).addClass('p2').appendTo(div4)
+    $('<a></a>').html("评分:"+data.subjects[3].rating.average).addClass('p0').appendTo(div4)
+    $('<button type="button"></button>').html("选座购票").appendTo(div4)
+    // $('<img src="../photo/a/5.png"/>').appendTo(div5);
+    $('<img/>').attr('src',data.subjects[4].images.large).appendTo(div5);
+    $('<p></p>').html(data.subjects[4].title).addClass('p2').appendTo(div5)
+    $('<a></a>').html("评分:"+data.subjects[4].rating.average).addClass('p0').appendTo(div5)
+    $('<button type="button"></button>').html("选座购票").appendTo(div5)
+
+    //------------------------------------------------
+
+
+      // $('<img src="../photo/a/1.png"/>').appendTo(div6);
+      $('<img/>').attr('src',data.subjects[5].images.large).appendTo(div6);
+    $('<p></p>').html(data.subjects[5].title).addClass('p4').appendTo(div6);
+    $('<a></a>').html("评分:"+data.subjects[5].rating.average).addClass('p0').appendTo(div6);
+    $('<button type="button"></button>').html("选座购票").appendTo(div6);
+  //  $('<img src="../photo/a/7.png"/>').appendTo(div7);
+    $('<img/>').attr('src',data.subjects[6].images.large).appendTo(div7);
+    $('<p></p>').html(data.subjects[6].title).addClass('p1').appendTo(div7)
+    $('<a></a>').html("评分:"+data.subjects[6].rating.average).addClass('p0').appendTo(div7)
+    $('<button type="button"></button>').html("选座购票").appendTo(div7)
+   // $('<img src="../photo/a/9.png"/>').appendTo(div8);
+      $('<img/>').attr('src',data.subjects[7].images.large).appendTo(div8);
+    $('<p></p>').html(data.subjects[7].title).addClass('p3').appendTo(div8)
+    $('<a></a>').html("评分:"+data.subjects[7].rating.average).addClass('p0').appendTo(div8)
+    $('<button type="button"></button>').html("选座购票").appendTo(div8)
+    // $('<img src="../photo/a/8.png"/>').appendTo(div9);
+     $('<img/>').attr('src',data.subjects[8].images.large).appendTo(div9);
+    $('<p></p>').html(data.subjects[8].title).addClass('p1').appendTo(div9)
+    $('<a></a>').html("评分:"+data.subjects[8].rating.average).addClass('p0').appendTo(div9)
+    $('<button type="button"></button>').html("选座购票").appendTo(div9)
+  // $('<img src="../photo/a/6.png"/>').appendTo(div10);
+     $('<img/>').attr('src',data.subjects[9].images.large).appendTo(div10);
+    $('<p></p>').html(data.subjects[9].title).addClass('p1').appendTo(div10)
+    $('<a></a>').html("评分:"+data.subjects[9].rating.average).addClass('p0').appendTo(div10)
+    $('<button type="button"></button>').html("选座购票").appendTo(div10)
+},'jsonp')
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/jquery.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../css/detail.css">
+</head>
+<body>
+
+<!-- 这个详细界面，一样也是从豆瓣后台获取数据，因为主要是想学习跨域问题，
+
+     界面只是设计了一下，部分是没有实际功能 -->
+
+
+
+<div class="d4">
+    <p class="p2">豆瓣</p>
+    <p>读书</p>
+    <p>电影</p>
+    <p>音乐</p>
+    <p>同城</p>
+    <p>小组</p>
+    <p>阅读</p>
+    <p>FM</p>
+    <p>时间</p>
+    <p>豆品</p>
+    <p>更多</p>
+    <p class="p1">下载豆瓣客户端</p>
+    <p>登录/注册</p>
+</div>
+<div class="d5">
+    <b style="display:inline-block;margin-top:20px;font-size: 30px;color: #258DCD;margin-left: 50px;">豆瓣电影</b>
+    <input type="text" placeholder="搜索电影、电视剧、综艺、影人" style="display: inline-block;
+margin-left: 40px;width: 450px;height: 25px;margin-top: 0px;margin-bottom: 18px"/><button type="submit" style="height: 33px;background-color: grey"><li class="fa fa-search" style="color: #eeeeee"></li></button>
+<br/>
+    <a class="a1" style="margin-left: 50px">影讯&购票</a>
+    <a class="a1">选电影</a>
+    <a class="a1">电视剧</a>
+    <a class="a1">排行榜</a>
+    <a class="a1">分类</a>
+    <a class="a1">影评</a>
+    <a class="a1">2018年度报告</a>
+    <a class="a1">2018书影音报告</a>
+</div>
+<div class="d3" style="margin-top: 35px;margin-left: 40px;"></div>
+
+<div style="margin-left: 40px;">
+    <div class="d1"></div>
+    <div class="div"></div>
+    <div class="d2"></div>
+</div>
+
+<script>
+
+    alert("因为是从豆瓣后台直接获取数据，不一定能获取到图片数据")
+    var d1 = $('.d1');
+    var div = $('.div');
+    var d2 = $('.d2');
+    $.get('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0',function (data) {
+
+        $('<a style="font-size: 35px;font-family: 宋体"></a>').html(data.subjects[0].title+'('+data.subjects[0].year+')').appendTo($('.d3'));
+     //   $('<img src="../photo/a/2.png" />').appendTo(d1);
+
+     $('<img/>').attr('src',data.subjects[0].images.large).appendTo(d1);
+
+        $('<a></a>').html('导演：'+data.subjects[0].directors[0].name).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<a></a>').html('主演：'+data.subjects[0].casts[0].name+'/'+data.subjects[0].casts[1].name+'/'+data.subjects[0].casts[2].name).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<a></a>').html('类型：'+data.subjects[0].genres[0]+'/'+data.subjects[0].genres[1]+'/'+data.subjects[0].genres[2]).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<a></a>').html('制片国家/地区：'+data.subjects[0].pubdates[0]).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<a></a>').html('语言：汉语普通话').appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<a></a>').html('上映日期：'+data.subjects[0].pubdates[0]).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<a></a>').html('片长：'+data.subjects[0].durations[0]).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<a></a>').html('又名：null').appendTo(div);
+
+        $('<a></a>').html('豆瓣评分').appendTo(d2);
+        $('<br/>').appendTo(d2);
+        $('<a style="font-size: 25px"></a>').html(data.subjects[0].rating.average).appendTo(d2);
+        $('<li class="fa fa-star"></li>').appendTo(d2);
+        $('<li class="fa fa-star"></li>').appendTo(d2);
+        $('<li class="fa fa-star"></li>').appendTo(d2);
+        $('<li class="fa fa-star-half-empty"></li>').appendTo(d2);
+        $('<li class="fa fa-star-o"></li>').appendTo(d2);
+
+    },'jsonp')
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

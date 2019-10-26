@@ -1,0 +1,65 @@
+.d{
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+div div{
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 350px;
+    border: 1px solid gray;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.d1{
+    margin-right: 20px;
+}
+.d2{
+    margin-top: 30px;
+    margin-right: 20px;
+}
+img{
+
+    width:200px;
+    height: 220px;
+    border-radius: 8px;
+
+}
+p{
+    display: block;
+    margin-top: 10px;
+}
+.p1{
+    margin-left: 60px;
+}
+.p2{
+    margin-left: 55px;
+}
+.p3{
+    margin-left: 50px;
+}
+.p4{
+    margin-left: 40px;
+}
+.p5{
+    margin-left: 20px;
+}
+.p6{
+    margin-left: 70px;
+}
+button{
+    display: inline-block;
+    margin-left: 50px;
+    width: 80px;
+    height: 30px;
+    margin-top: 15px;
+}
+li{
+    color: orange;
+}
+.p0{
+    margin-left: 60px;
+    display: inline-block;
+    color:darkorange;
+}
